@@ -1,0 +1,118 @@
+/**
+ * ============================================================================
+ * FILE: tokens.css
+ * LOCATION: frontend/src/styles/tokens.css
+ * ============================================================================
+ *
+ * PURPOSE:
+ *    Aurvin design tokens (colour, radius, spacing, type, motion, elevation).
+ *
+ * ROLE IN PROJECT:
+ *    Single source of visual truth. Dark is the default on :root; the light
+ *    theme applies when ThemeProvider sets data-theme="light" on <html>.
+ *    All stylesheets reference these --aurvin-* tokens directly.
+ *
+ * KEY COMPONENTS:
+ *    - Colour tokens (dark default + light override), contrast-tested by
+ *      tokens.test.ts
+ *    - Radius, spacing, type, motion, elevation and z-index scales
+ * ============================================================================
+ */
+
+:root {
+  /* Colour: dark (default) */
+  --aurvin-bg: #0B0E14;
+  --aurvin-surface: #111722;
+  --aurvin-surface-elevated: #1A2230;
+  --aurvin-primary: #7485FF;
+  --aurvin-primary-hover: #8B99FF;
+  --aurvin-on-primary: #0B0E14;
+  --aurvin-secondary: #9B7BFF;
+  --aurvin-success: #35C99A;
+  --aurvin-warning: #E9B75C;
+  --aurvin-danger: #F07178;
+  --aurvin-text-primary: #F4F6FA;
+  --aurvin-text-secondary: #A0A9B8;
+  --aurvin-border: rgba(255, 255, 255, 0.08);
+  --aurvin-border-strong: rgba(255, 255, 255, 0.14);
+  --aurvin-hover: rgba(255, 255, 255, 0.05);
+  --aurvin-hover-strong: rgba(255, 255, 255, 0.08);
+  --aurvin-selected: rgba(116, 133, 255, 0.14);
+  --aurvin-user-bubble: #1D2638;
+  --aurvin-code-bg: #080A0F;
+  --aurvin-disabled-bg: #2A3344;
+  --aurvin-disabled-fg: #7D8799;
+  --aurvin-overlay: rgba(4, 6, 10, 0.6);
+  --aurvin-gradient-brand: linear-gradient(135deg, #7485FF 0%, #9B7BFF 100%);
+  --aurvin-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --aurvin-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --aurvin-shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
+  --aurvin-shadow-composer: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 8px 32px rgba(0, 0, 0, 0.35);
+
+  /* Radius */
+  --aurvin-radius-sm: 8px;
+  --aurvin-radius-md: 12px;
+  --aurvin-radius-lg: 18px;
+  --aurvin-radius-full: 999px;
+
+  /* Spacing (4 px scale) */
+  --aurvin-space-1: 4px;
+  --aurvin-space-2: 8px;
+  --aurvin-space-3: 12px;
+  --aurvin-space-4: 16px;
+  --aurvin-space-5: 20px;
+  --aurvin-space-6: 24px;
+  --aurvin-space-8: 32px;
+
+  /* Type */
+  --aurvin-font: ui-sans-serif, -apple-system, system-ui, 'Segoe UI', Helvetica, 'Apple Color Emoji',
+    Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --aurvin-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --aurvin-text-xs: 12px;
+  --aurvin-text-sm: 13px;
+  --aurvin-text-md: 14px;
+  --aurvin-text-base: 16px;
+  --aurvin-text-lg: 20px;
+  --aurvin-text-xl: 28px;
+
+  /* Motion (320 ms matches CANVAS_TRANSITION_MS) */
+  --aurvin-duration-fast: 120ms;
+  --aurvin-duration-base: 200ms;
+  --aurvin-duration-slow: 320ms;
+  --aurvin-ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Layers */
+  --aurvin-z-drawer: 30;
+  --aurvin-z-canvas-overlay: 40;
+  --aurvin-z-dialog: 100;
+}
+
+:root[data-theme='light'] {
+  --aurvin-bg: #F7F8FB;
+  --aurvin-surface: #FFFFFF;
+  --aurvin-surface-elevated: #FFFFFF;
+  --aurvin-primary: #4F5FE8;
+  --aurvin-primary-hover: #4352D6;
+  --aurvin-on-primary: #FFFFFF;
+  --aurvin-secondary: #6E4FE6;
+  --aurvin-success: #137A59;
+  --aurvin-warning: #92600F;
+  --aurvin-danger: #C2343F;
+  --aurvin-text-primary: #0F1420;
+  --aurvin-text-secondary: #5B6475;
+  --aurvin-border: rgba(15, 20, 32, 0.1);
+  --aurvin-border-strong: rgba(15, 20, 32, 0.16);
+  --aurvin-hover: rgba(15, 20, 32, 0.04);
+  --aurvin-hover-strong: rgba(15, 20, 32, 0.06);
+  --aurvin-selected: rgba(79, 95, 232, 0.1);
+  --aurvin-user-bubble: #EEF0FD;
+  --aurvin-code-bg: #F1F3F8;
+  --aurvin-disabled-bg: #E3E6EE;
+  --aurvin-disabled-fg: #8A93A3;
+  --aurvin-overlay: rgba(15, 20, 32, 0.45);
+  --aurvin-gradient-brand: linear-gradient(135deg, #4F5FE8 0%, #6E4FE6 100%);
+  --aurvin-shadow-sm: 0 1px 2px rgba(15, 20, 32, 0.06);
+  --aurvin-shadow-md: 0 8px 24px rgba(15, 20, 32, 0.08);
+  --aurvin-shadow-lg: 0 20px 48px rgba(15, 20, 32, 0.15);
+  --aurvin-shadow-composer: 0 0 0 1px rgba(15, 20, 32, 0.1), 0 4px 24px rgba(15, 20, 32, 0.06);
+}

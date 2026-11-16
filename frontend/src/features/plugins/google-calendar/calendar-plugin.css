@@ -1,0 +1,412 @@
+.aurvin-calendar-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aurvin-calendar-oauth-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--aurvin-border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.aurvin-calendar-oauth-banner p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.aurvin-calendar-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aurvin-border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.aurvin-calendar-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.aurvin-calendar-heading {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.aurvin-calendar-state-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--aurvin-border);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.aurvin-calendar-state-badge[data-calendar-connection-state='connected'] {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.1);
+}
+
+.aurvin-calendar-state-badge[data-calendar-connection-state='reconnect-required'] {
+  color: var(--aurvin-danger);
+  border-color: rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.aurvin-calendar-summary {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.aurvin-calendar-meta {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--aurvin-border);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.aurvin-calendar-meta dt {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-calendar-meta dd {
+  margin: 2px 0 0;
+  font-size: 13px;
+  font-family: var(--aurvin-mono);
+  word-break: break-all;
+}
+
+.aurvin-calendar-actions,
+.aurvin-calendar-confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.aurvin-calendar-primary-btn {
+  background: var(--aurvin-primary) !important;
+  color: var(--aurvin-on-primary) !important;
+  border-color: var(--aurvin-primary) !important;
+  font-weight: 600;
+}
+
+.aurvin-calendar-turn-region {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto 12px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aurvin-calendar-progress-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--aurvin-border);
+  background: var(--aurvin-surface-elevated);
+  font-size: 13px;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-calendar-operation-card,
+.aurvin-calendar-clarification-card {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--aurvin-border);
+  background: var(--aurvin-surface-elevated);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.aurvin-calendar-clarification-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.aurvin-calendar-clarification-message,
+.aurvin-calendar-clarification-expired {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.aurvin-calendar-clarification-expired {
+  font-size: 13px;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-calendar-candidates-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aurvin-calendar-candidate-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.aurvin-calendar-candidate-id,
+.aurvin-calendar-candidate-role {
+  font-size: 12px;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-calendar-clarification-card :is(button):focus-visible {
+  outline: 2px solid var(--aurvin-primary);
+  outline-offset: 3px;
+}
+
+.aurvin-calendar-operation-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.aurvin-calendar-receipt-title {
+  font-weight: 600;
+}
+
+.aurvin-calendar-receipt-id {
+  font-family: var(--aurvin-mono);
+  font-size: 12px;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-calendar-receipt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--aurvin-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.aurvin-calendar-narration-warning {
+  margin: 0;
+  font-size: 13px;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-calendar-retry-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.aurvin-calendar-retry-explanation {
+  margin: 0;
+  font-size: 13px;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-calendar-defaults {
+  min-width: 0;
+  border: 1px solid var(--aurvin-border);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aurvin-calendar-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.aurvin-calendar-choice input[type="radio"]:disabled + span {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.aurvin-calendar-choice > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.aurvin-calendar-choice-meta {
+  display: block;
+  font-size: 12px;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-calendar-defaults :is(input, button):focus-visible {
+  outline: 2px solid var(--aurvin-primary);
+  outline-offset: 3px;
+}
+
+.aurvin-calendar-target-badge {
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurvin-calendar-panel *,
+  .aurvin-calendar-turn-region * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Modern Google Calendar preview card matching Image 2 and Aurvin's theme */
+.aurvin-calendar-gemini-card {
+  padding: 18px 22px;
+  border-radius: 18px;
+  border: 1px solid var(--aurvin-border);
+  background: var(--aurvin-surface-elevated);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  gap: 12px;
+}
+
+.aurvin-calendar-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aurvin-calendar-card-header-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-calendar-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.aurvin-calendar-event-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--aurvin-text-primary);
+  line-height: 1.3;
+}
+
+.aurvin-calendar-event-time {
+  font-size: 14px;
+  color: var(--aurvin-text-secondary);
+  margin-bottom: 6px;
+}
+
+.aurvin-calendar-event-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--aurvin-text-primary);
+  margin-top: 2px;
+}
+
+.aurvin-calendar-event-row svg {
+  flex-shrink: 0;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-calendar-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.aurvin-calendar-cancel-btn {
+  background: transparent;
+  border: none;
+  color: var(--aurvin-text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.aurvin-calendar-cancel-btn:hover:not(:disabled) {
+  background: var(--aurvin-hover);
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-calendar-cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.aurvin-calendar-confirm-btn {
+  background: var(--aurvin-primary);
+  color: var(--aurvin-on-primary);
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.aurvin-calendar-confirm-btn:hover:not(:disabled) {
+  background: var(--aurvin-primary-hover);
+}
+
+.aurvin-calendar-confirm-btn:disabled {
+  background: var(--aurvin-disabled-bg);
+  color: var(--aurvin-disabled-fg);
+  cursor: not-allowed;
+}
+
+.aurvin-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -1,0 +1,23 @@
+<!--
+============================================================================
+FILE: auth-browser.html
+LOCATION: frontend/src/features/auth/integration-tests/auth-browser.html
+PURPOSE: Run deterministic auth and role-navigation checks in a real browser.
+ROLE IN PROJECT: Development-only harness; not an application route or service proof.
+KEY COMPONENTS: Named result regions and the fixture module entry.
+============================================================================
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth integration fixture</title>
+  </head>
+  <body>
+    <p id="fixture-status" role="status">Running</p>
+    <ol id="fixture-checks"></ol>
+    <div id="root"></div>
+    <script type="module" src="./auth-browser.tsx"></script>
+  </body>
+</html>

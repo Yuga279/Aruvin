@@ -1,0 +1,176 @@
+/**
+ * ============================================================================
+ * FILE: ui.css
+ * LOCATION: frontend/src/ui/ui.css
+ * ============================================================================
+ *
+ * PURPOSE:
+ *    Styles for the Aurvin design-system primitives.
+ *
+ * ROLE IN PROJECT:
+ *    Uses only --aurvin-* tokens so primitives follow both themes. Feature
+ *    stylesheets use distinct class names (e.g. aurvin-chat-icon-btn,
+ *    aurvin-admin-badge) so they never override these primitives.
+ *
+ * KEY COMPONENTS:
+ *    - Button variants/sizes, IconButton, Badge tones, Card, Skeleton, Kbd,
+ *      ErrorState; reduced-motion handling for Skeleton
+ * ============================================================================
+ */
+
+.aurvin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--aurvin-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--aurvin-radius-full);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--aurvin-duration-fast) var(--aurvin-ease),
+    border-color var(--aurvin-duration-fast) var(--aurvin-ease);
+}
+
+.aurvin-btn-md {
+  min-height: 38px;
+  padding: 8px 20px;
+  font-size: var(--aurvin-text-md);
+}
+
+.aurvin-btn-sm {
+  min-height: 32px;
+  padding: 5px 14px;
+  font-size: var(--aurvin-text-sm);
+}
+
+.aurvin-btn-primary {
+  background: var(--aurvin-primary);
+  color: var(--aurvin-on-primary);
+}
+
+.aurvin-btn-primary:hover:not(:disabled) {
+  background: var(--aurvin-primary-hover);
+}
+
+.aurvin-btn-secondary {
+  background: var(--aurvin-surface-elevated);
+  border-color: var(--aurvin-border-strong);
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-btn-secondary:hover:not(:disabled),
+.aurvin-btn-ghost:hover:not(:disabled) {
+  background: var(--aurvin-hover-strong);
+}
+
+.aurvin-btn-ghost {
+  background: transparent;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-btn-danger {
+  background: transparent;
+  border-color: var(--aurvin-danger);
+  color: var(--aurvin-danger);
+}
+
+.aurvin-btn:disabled {
+  cursor: not-allowed;
+  background: var(--aurvin-disabled-bg);
+  border-color: transparent;
+  color: var(--aurvin-disabled-fg);
+}
+
+.aurvin-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--aurvin-radius-sm);
+  color: var(--aurvin-text-secondary);
+  cursor: pointer;
+}
+
+.aurvin-icon-btn:hover:not(:disabled) {
+  background: var(--aurvin-hover-strong);
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--aurvin-radius-full);
+  font-size: var(--aurvin-text-xs);
+  font-weight: 600;
+  border: 1px solid var(--aurvin-border);
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-badge-primary { color: var(--aurvin-primary); border-color: currentColor; }
+.aurvin-badge-success { color: var(--aurvin-success); border-color: currentColor; }
+.aurvin-badge-warning { color: var(--aurvin-warning); border-color: currentColor; }
+.aurvin-badge-danger { color: var(--aurvin-danger); border-color: currentColor; }
+
+.aurvin-card {
+  background: var(--aurvin-surface-elevated);
+  border: 1px solid var(--aurvin-border);
+  border-radius: var(--aurvin-radius-md);
+  padding: var(--aurvin-space-4);
+  box-shadow: var(--aurvin-shadow-sm);
+}
+
+.aurvin-skeleton {
+  display: block;
+  border-radius: var(--aurvin-radius-sm);
+  background: linear-gradient(90deg, var(--aurvin-hover) 0%, var(--aurvin-hover-strong) 50%, var(--aurvin-hover) 100%);
+  background-size: 200% 100%;
+  animation: aurvin-skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes aurvin-skeleton-pulse {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurvin-skeleton { animation: none; }
+}
+
+.aurvin-kbd {
+  display: inline-flex;
+  align-items: center;
+  min-width: 20px;
+  padding: 1px 6px;
+  border: 1px solid var(--aurvin-border-strong);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  font-family: var(--aurvin-mono);
+  font-size: 11px;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-error-state {
+  display: grid;
+  justify-items: start;
+  gap: var(--aurvin-space-2);
+  padding: var(--aurvin-space-4);
+  border: 1px solid var(--aurvin-border);
+  border-left: 3px solid var(--aurvin-danger);
+  border-radius: var(--aurvin-radius-md);
+  background: var(--aurvin-surface-elevated);
+}
+
+.aurvin-error-state-title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-error-state-message {
+  margin: 0;
+  font-size: var(--aurvin-text-md);
+  color: var(--aurvin-text-secondary);
+}

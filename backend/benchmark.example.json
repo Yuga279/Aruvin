@@ -1,0 +1,14 @@
+{
+  "baseUrl": "http://127.0.0.1:8001/api",
+  "origin": "http://localhost:5173",
+  "start": "2026-11-01T10:00:00Z",
+  "end": "2026-11-01T11:00:00Z",
+  "timeZone": "Etc/UTC",
+  "repetitions": 3,
+  "warmups": 1,
+  "allowPaid": false,
+  "allowCalendarData": false,
+  "allowMutations": false,
+  "disposableCalendar": false,
+  "outputDirectory": "benchmark-results"
+}

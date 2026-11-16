@@ -1,0 +1,81 @@
+/**
+ * ============================================================================
+ * FILE: composer-voice-controls.css
+ * LOCATION: frontend/src/features/voice/dictation/composer-voice-controls.css
+ * ============================================================================
+ *
+ * PURPOSE:
+ *    Scoped styles for voice composer controls, buttons, and status indicator.
+ *
+ * ROLE IN PROJECT:
+ *    Provides responsive, accessible, visible-focus, and reduced-motion
+ *    styling for dictation and voice mode entries within Composer.
+ * ============================================================================
+ */
+
+.aurvin-voice-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* Keep the 36px entry targets from being squeezed when the composer box is narrow.
+     The notice is absolutely positioned below and contributes no width to this row. */
+  flex-shrink: 0;
+  gap: 6px;
+  max-width: 100%;
+}
+
+.aurvin-voice-btn {
+  min-width: 36px;
+  min-height: 36px;
+  height: 36px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid var(--aurvin-border);
+  border-radius: 18px;
+  background: transparent;
+  color: var(--aurvin-text-primary);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.aurvin-voice-btn:hover:not(:disabled) { background-color: var(--aurvin-hover-strong); }
+.aurvin-voice-btn:disabled { opacity: 0.5; cursor: default; }
+.aurvin-voice-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.aurvin-composer .aurvin-textarea:focus,
+.aurvin-composer .aurvin-textarea:focus-visible { outline: none; }
+.aurvin-composer .aurvin-textarea { min-width: 0; }
+.aurvin-composer-box:has(.aurvin-voice-status) { margin-bottom: 22px; }
+/* The notice is taken out of the composer box's flex row and rendered just below it.
+   .aurvin-composer-box is position:relative, so this contributes no width to that row.
+   In-flow it became the group's max-content basis and collapsed the textarea
+   (flex basis 0) to nothing on narrow layouts. */
+.aurvin-voice-status {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 18px;
+  right: 18px;
+  color: var(--aurvin-text-secondary);
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+.aurvin-voice-description {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurvin-voice-controls * { animation: none; transition: none; }
+}

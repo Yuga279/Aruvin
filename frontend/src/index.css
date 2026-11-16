@@ -1,0 +1,83 @@
+/**
+ * ============================================================================
+ * FILE: index.css
+ * LOCATION: frontend/src/index.css
+ * ============================================================================
+ *
+ * PURPOSE:
+ *    Global reset, root typography/colour and accessibility utilities.
+ *
+ * ROLE IN PROJECT:
+ *    Applies the Aurvin tokens from styles/tokens.css to the document root.
+ *    Theme switching happens in tokens.css via data-theme.
+ *
+ * KEY COMPONENTS:
+ *    - Root font/colour/background from --aurvin-* tokens
+ *    - Box-sizing / full-height reset, focus ring, .sr-only
+ * ============================================================================
+ */
+/* Tokens load here so every entry point (app and browser fixtures) gets them. */
+@import './styles/tokens.css';
+
+:root {
+  font-family: var(--aurvin-font);
+  color: var(--aurvin-text-primary);
+  background-color: var(--aurvin-bg);
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+textarea,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--aurvin-primary);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,22 @@
+#root {
+  width: 100%;
+  min-height: 100svh;
+}
+
+.aurvin-chat-surface {
+  height: 100%;
+  min-height: 0;
+}
+
+.aurvin-chat-surface[hidden] {
+  display: none;
+}
+
+.aurvin-auth-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  font-size: 15px;
+  color: var(--aurvin-text-secondary);
+}

@@ -1,0 +1,7 @@
+{
+  "connected":{"type":"Connected","request_id":"fixture-request","model_name":"flux-haley-en","model_version":"fixture-2026-10-08","model_uuids":[]},
+  "started":{"type":"SpeechStarted","speech_id":"dg_sp_000000000001"},
+  "flushed":{"type":"Flushed","speech_id":"dg_sp_000000000001"},
+  "completed":{"type":"SpeechMetadata","speech_id":"dg_sp_000000000001","audio_duration_ms":100,"input_character_count":12,"billable_character_count":12,"controls_applied":{"pronunciations_applied":0,"breaks_applied":0,"pronunciation_warnings":0}},
+  "interrupted":{"type":"SpeechInterrupted","audio_played_ms":50,"text_spoken":"Hello","text_remaining":" world.","metadata":{"speech_id":"dg_sp_000000000001","audio_duration_ms":50,"input_character_count":12,"billable_character_count":12,"controls_applied":{"pronunciations_applied":0,"breaks_applied":0,"pronunciation_warnings":0}}}
+}

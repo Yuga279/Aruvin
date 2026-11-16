@@ -1,0 +1,74 @@
+# ============================================================================
+# FILE: nginx.conf.template
+# LOCATION: deployment/render/nginx.conf.template
+# ============================================================================
+# PURPOSE:
+#    NGINX reverse proxy template for containerized Render deployments.
+# ROLE IN PROJECT:
+#    Listens on Render's dynamic $PORT, terminates external requests,
+#    enables the dictation-only WebSocket at /api/voice, and disables buffering for SSE chat.
+# ============================================================================
+
+worker_processes 1;
+events { worker_connections 256; }
+
+http {
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
+  sendfile on;
+  client_max_body_size 256k;
+  access_log off;
+
+  server {
+    listen ${PORT};
+
+    # Root health check endpoint
+    location = / {
+      return 200 '{"status":"ok","service":"aurvin-backend"}';
+      add_header Content-Type application/json;
+    }
+
+    # Public liveness probe for Render health check
+    location = /api/operations/live {
+      proxy_pass http://127.0.0.1:3000;
+      proxy_http_version 1.1;
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-Proto https;
+    }
+
+    # Restrict internal operations diagnostic routes
+    location /api/operations/ {
+      allow 127.0.0.1;
+      deny all;
+    }
+
+    # Dictation-only WebSocket; live WebRTC media/control use separate LiveKit endpoints.
+    # LiveKit signaling/media are separate; this template provides no application authentication.
+    # Do not expose unauthenticated public voice; see docs/live-voice-webrtc/operations.md.
+    location = /api/voice {
+      proxy_pass http://127.0.0.1:3000;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-Proto https;
+      proxy_buffering off;
+      proxy_cache off;
+      proxy_read_timeout 1260s;
+      proxy_send_timeout 1260s;
+    }
+
+    # Chat HTTP & Server-Sent Events (SSE) Streaming
+    location /api/ {
+      proxy_pass http://127.0.0.1:3000;
+      proxy_http_version 1.1;
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-Proto https;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_buffering off;
+      proxy_cache off;
+      proxy_read_timeout 240s;
+      proxy_send_timeout 240s;
+    }
+  }
+}

@@ -1,0 +1,115 @@
+/**
+ * ============================================================================
+ * FILE: scrollbars.css
+ * LOCATION: frontend/src/styles/scrollbars.css
+ * ============================================================================
+ *
+ * PURPOSE:
+ *    Modern, hover-revealed scrollbars for every scrollable surface in Aurvin.
+ *
+ * ROLE IN PROJECT:
+ *    Global base layer shared by the transcript, session sidebar, modals, code
+ *    blocks, canvas panels, admin dashboard, and live voice, so no component
+ *    has to restyle its own scrollbar.
+ *
+ * KEY COMPONENTS:
+ *    - Tokens: gutter size, thumb inset, and dark/light thumb colors.
+ *    - WebKit/Blink path: transparent thumb that fades in while its container
+ *      is hovered, drawn as a rounded inset pill.
+ *    - Firefox path: scrollbar-width/scrollbar-color revealed on container hover.
+ * ============================================================================
+ */
+
+/* Thumb geometry and colors -------------------------------------------------- */
+:root {
+  --aurvin-scrollbar-size: 12px;
+  --aurvin-scrollbar-thumb-inset: 3px;
+  --aurvin-scrollbar-thumb: rgba(255, 255, 255, 0.22);
+  --aurvin-scrollbar-thumb-active: rgba(255, 255, 255, 0.32);
+  --aurvin-scrollbar-track: transparent;
+}
+
+:root[data-theme='light'] {
+  --aurvin-scrollbar-thumb: rgba(0, 0, 0, 0.24);
+  --aurvin-scrollbar-thumb-active: rgba(0, 0, 0, 0.36);
+}
+
+/* WebKit / Blink ------------------------------------------------------------- */
+*::-webkit-scrollbar {
+  width: var(--aurvin-scrollbar-size);
+  height: var(--aurvin-scrollbar-size);
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background-color: var(--aurvin-scrollbar-track);
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--aurvin-scrollbar-thumb);
+  border: var(--aurvin-scrollbar-thumb-inset) solid transparent;
+  background-clip: padding-box;
+  border-radius: 999px;
+  transition: background-color 180ms ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--aurvin-scrollbar-thumb-active);
+}
+
+/* Hover reveal: the thumb stays hidden until the pointer enters the container
+   that actually scrolls, so an idle window shows no scrollbar at all. Devices
+   without a pointer keep the always-visible thumb above.
+   The reveal is driven by scroll-reveal.ts setting REVEAL_ATTRIBUTE rather
+   than by :hover, because Chromium caches ::-webkit-scrollbar-thumb styles
+   and does not re-resolve them when only the :hover state changes.
+   :focus (not :focus-within) is deliberate: a focused element reveals only its
+   own scrollbar, so clicking a button inside the transcript does not pin the
+   transcript's scrollbar on while the pointer is elsewhere. */
+@media (hover: hover) and (pointer: fine) {
+  *::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  [data-aurvin-scroll-reveal]::-webkit-scrollbar-thumb,
+  *:focus::-webkit-scrollbar-thumb {
+    background-color: var(--aurvin-scrollbar-thumb);
+  }
+
+  [data-aurvin-scroll-reveal]::-webkit-scrollbar-thumb:hover,
+  *:focus::-webkit-scrollbar-thumb:hover {
+    background-color: var(--aurvin-scrollbar-thumb-active);
+  }
+}
+
+/* Firefox -------------------------------------------------------------------- */
+/* Scoped to Firefox on purpose: declaring scrollbar-color/scrollbar-width
+   anywhere else makes Chromium ignore the ::-webkit-scrollbar rules above and
+   fall back to its native bar, which loses the rounded inset pill. */
+@supports (-moz-appearance: none) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--aurvin-scrollbar-thumb) var(--aurvin-scrollbar-track);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    * {
+      scrollbar-color: transparent transparent;
+    }
+
+    [data-aurvin-scroll-reveal],
+    *:focus {
+      scrollbar-color: var(--aurvin-scrollbar-thumb) var(--aurvin-scrollbar-track);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *::-webkit-scrollbar-thumb {
+    transition: none;
+  }
+}

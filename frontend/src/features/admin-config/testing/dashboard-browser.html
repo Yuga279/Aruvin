@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurvin admin dashboard fixture</title>
+    <style>
+      #fixture-results {
+        position: fixed;
+        z-index: 9999;
+        right: 8px;
+        bottom: 8px;
+        max-width: min(420px, 90vw);
+        max-height: 40vh;
+        overflow: auto;
+        background: #111;
+        color: #eee;
+        border: 1px solid #444;
+        padding: 8px 12px;
+        font: 12px/1.4 ui-monospace, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <section id="fixture-results" aria-label="Fixture results">
+      <p id="fixture-status">Starting closed browser checks…</p>
+      <ol id="fixture-checks"></ol>
+    </section>
+    <script type="module" src="/src/features/admin-config/testing/dashboard-browser.tsx"></script>
+  </body>
+</html>

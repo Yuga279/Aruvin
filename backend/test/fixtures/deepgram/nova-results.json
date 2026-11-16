@@ -1,0 +1,7 @@
+[
+  {"type":"Results","start":0,"duration":0.8,"channel_index":[0,1],"is_final":false,"speech_final":false,"channel":{"alternatives":[{"transcript":"Demo"}]}},
+  {"type":"Results","start":0,"duration":0.8,"channel_index":[0,1],"is_final":false,"speech_final":false,"channel":{"alternatives":[{"transcript":"Demo 42"}]}},
+  {"type":"Results","start":0,"duration":0.8,"channel_index":[0,1],"is_final":true,"speech_final":true,"channel":{"alternatives":[{"transcript":"Demo 42."}]}},
+  {"type":"Results","start":0,"duration":0.8,"channel_index":[0,1],"is_final":true,"speech_final":true,"channel":{"alternatives":[{"transcript":"Demo 42."}]}},
+  {"type":"Results","start":0.8,"duration":0.08,"channel_index":[0,1],"is_final":true,"speech_final":true,"from_finalize":true,"channel":{"alternatives":[{"transcript":"Final tail."}]}}
+]

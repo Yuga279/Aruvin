@@ -1,0 +1,857 @@
+/**
+ * ============================================================================
+ * FILE: admin-config.css
+ * LOCATION: frontend/src/features/admin-config/admin-config.css
+ * ============================================================================
+ *
+ * PURPOSE:
+ *    Modern, responsive layout and styles for Manage Aurvin admin dashboard.
+ *
+ * ROLE IN PROJECT:
+ *    Styles navigation rails, settings cards, credential rows, and form controls
+ *    consistent with Aurvin's sleek dark theme and typography.
+ *
+ * KEY COMPONENTS:
+ *    - Header, back navigation, and tab bar
+ *    - Sidebar navigation rail and settings fieldsets
+ *    - Credential cards, inputs, and primary save row
+ * ============================================================================
+ */
+
+.aurvin-admin {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  background: var(--aurvin-bg);
+  color: var(--aurvin-text-primary);
+  font-family: var(--aurvin-font);
+}
+
+.aurvin-admin-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 20px;
+  padding: 20px 32px 16px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--aurvin-border);
+}
+
+.aurvin-admin-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.aurvin-admin-title:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.aurvin-admin button {
+  font: inherit;
+  color: var(--aurvin-text-primary);
+  background: transparent;
+  border: 1px solid var(--aurvin-border);
+  border-radius: 8px;
+  min-height: 38px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.aurvin-admin-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  min-height: 34px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--aurvin-border);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-admin-back::before {
+  content: '←';
+  font-size: 13px;
+  line-height: 1;
+}
+
+.aurvin-admin-back:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.aurvin-admin-back:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.aurvin-admin-continue,
+.aurvin-admin [role='status'],
+.aurvin-admin-help {
+  color: var(--aurvin-text-secondary);
+  font-size: 13px;
+}
+
+.aurvin-admin-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 32px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--aurvin-border);
+}
+
+.aurvin-admin-tabs [role='tab'] {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  min-height: 44px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--aurvin-text-secondary);
+  background: transparent;
+}
+
+.aurvin-admin-tabs [role='tab']:hover:not(:disabled) {
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-admin-tabs [role='tab'][aria-selected='true'] {
+  color: var(--aurvin-text-primary);
+  border-bottom-color: var(--aurvin-primary);
+}
+
+.aurvin-admin [role='tabpanel'] {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.aurvin-admin-config {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 760px);
+  gap: 36px;
+  padding: 28px 32px 48px;
+  align-items: start;
+}
+
+.aurvin-admin-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: sticky;
+  top: 0;
+}
+
+.aurvin-admin-rail button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  min-height: 40px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--aurvin-text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  text-align: left;
+}
+
+.aurvin-admin-rail button:hover {
+  background-color: var(--aurvin-hover);
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-admin-rail button[aria-current='true'] {
+  background-color: var(--aurvin-selected);
+  color: var(--aurvin-text-primary);
+  font-weight: 600;
+}
+
+.aurvin-admin-dirty {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--aurvin-warning);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.aurvin-admin-section-select {
+  display: none;
+}
+
+.aurvin-admin-section-title {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.aurvin-admin-fieldset {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aurvin-border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 0 0 20px;
+  min-width: 0;
+}
+
+.aurvin-admin-fieldset legend {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--aurvin-text-secondary);
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+
+.aurvin-admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 16px;
+}
+
+.aurvin-admin-field:last-child {
+  margin-bottom: 0;
+}
+
+.aurvin-admin-field label:not(.aurvin-admin-check) {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--aurvin-text-primary);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.aurvin-admin-field input:not([type='checkbox']),
+.aurvin-admin-field select,
+.aurvin-admin-field textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding: 9px 12px;
+  border: 1px solid var(--aurvin-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--aurvin-text-primary);
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.aurvin-admin-field input:not([type='checkbox']):focus,
+.aurvin-admin-field select:focus,
+.aurvin-admin-field textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.aurvin-admin-field textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
+  font-family: var(--aurvin-mono);
+  font-size: 13px;
+}
+
+.aurvin-admin-field select {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.aurvin-admin-field input[id*='modelId'],
+.aurvin-admin-unit {
+  font-family: var(--aurvin-mono);
+}
+
+.aurvin-admin-unit {
+  font-size: 12px;
+  color: var(--aurvin-text-secondary);
+  font-weight: normal;
+}
+
+.aurvin-admin-help,
+.aurvin-admin-field-error {
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.aurvin-admin-field-error,
+.aurvin-admin-summary {
+  color: var(--aurvin-danger);
+  font-weight: 500;
+}
+
+.aurvin-admin-policy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.aurvin-admin-policy p {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--aurvin-text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--aurvin-border);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.aurvin-admin-policy p::before {
+  content: '✓';
+  color: #34d399;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.aurvin-admin-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  cursor: pointer;
+  user-select: none;
+  width: fit-content;
+  padding: 2px 0;
+}
+
+.aurvin-admin-check input[type='checkbox'] {
+  width: 18px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  max-width: 18px !important;
+  accent-color: var(--aurvin-primary);
+  cursor: pointer;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.aurvin-admin-check span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-admin-credential {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aurvin-border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aurvin-admin-credential-label {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-admin-credential-state {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.aurvin-admin-mask {
+  font-family: var(--aurvin-mono);
+  letter-spacing: 0.18em;
+  font-size: 13px;
+  color: var(--aurvin-text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--aurvin-border);
+}
+
+.aurvin-admin-credential-state > span:not(.aurvin-admin-mask):not(.aurvin-admin-help) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.aurvin-admin-credential button {
+  min-height: 32px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--aurvin-border);
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-admin-credential button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.aurvin-admin-credential-editor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--aurvin-border);
+}
+
+.aurvin-admin-credential-editor label {
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-admin-credential-editor input {
+  min-width: 0;
+  flex: 1 1 260px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid var(--aurvin-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--aurvin-text-primary);
+  font-family: var(--aurvin-mono);
+  font-size: 14px;
+}
+
+.aurvin-admin-credential-editor button {
+  min-height: 38px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.aurvin-admin-credential-editor button[type='submit'] {
+  background: var(--aurvin-primary);
+  color: var(--aurvin-on-primary);
+  border: 1px solid var(--aurvin-primary);
+}
+
+.aurvin-admin-credential-editor button[type='submit']:disabled {
+  background: var(--aurvin-disabled-bg);
+  color: var(--aurvin-disabled-fg);
+  border-color: transparent;
+  cursor: not-allowed;
+}
+
+.aurvin-admin-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.aurvin-admin-confirm p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.aurvin-admin-confirm p:first-child {
+  font-weight: 600;
+  color: var(--aurvin-danger);
+}
+
+.aurvin-admin-save-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 20px;
+  margin-top: 28px;
+  padding: 18px 24px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aurvin-border);
+}
+
+.aurvin-admin-save-row p[role='status'] {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-admin-save-row .aurvin-admin-help {
+  margin: 0;
+  font-size: 12px;
+  color: var(--aurvin-text-secondary);
+  flex-basis: 100%;
+}
+
+.aurvin-admin-save {
+  min-height: 38px;
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--aurvin-primary);
+  color: var(--aurvin-on-primary);
+  border: 1px solid var(--aurvin-primary);
+}
+
+.aurvin-admin-save:hover:not(:disabled) {
+  background: var(--aurvin-primary-hover);
+  border-color: var(--aurvin-primary-hover);
+}
+
+.aurvin-admin-save:disabled {
+  background: var(--aurvin-disabled-bg);
+  color: var(--aurvin-disabled-fg);
+  border-color: transparent;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.aurvin-admin [role='alert']:has(> p) {
+  margin: 48px auto;
+  max-width: 460px;
+  padding: 32px 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aurvin-border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.aurvin-admin [role='alert'] p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-admin [role='alert'] button {
+  min-height: 38px;
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--aurvin-primary);
+  color: var(--aurvin-on-primary);
+  border: 1px solid var(--aurvin-primary);
+}
+
+.aurvin-profile-footer {
+  flex-shrink: 0;
+  position: relative;
+  padding: 8px;
+  border-top: 1px solid var(--aurvin-border);
+}
+
+.aurvin-profile {
+  position: relative;
+}
+
+.aurvin-profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.aurvin-profile-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.aurvin-profile-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--aurvin-surface-elevated);
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.aurvin-profile-labels {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1px;
+}
+
+.aurvin-profile-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.aurvin-profile-role {
+  font-size: 11px;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-profile-menu {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: calc(100% + 8px);
+  background: var(--aurvin-bg);
+  border: 1px solid var(--aurvin-border);
+  border-radius: 12px;
+  padding: 8px;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aurvin-profile-menu button {
+  width: 100%;
+  text-align: left;
+  min-height: 44px;
+}
+
+.aurvin-session-nav {
+  min-height: 0;
+}
+
+@media (max-width: 768px) {
+  .aurvin-admin-header,
+  .aurvin-admin-tabs,
+  .aurvin-admin-config {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .aurvin-admin-config {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  .aurvin-admin-rail {
+    display: none;
+  }
+
+  .aurvin-admin-section-select {
+    display: grid;
+    gap: 6px;
+    font-size: 14px;
+  }
+
+  .aurvin-admin-section-select select {
+    min-height: 44px;
+    width: 100%;
+  }
+}
+
+/* User Administration Table & Dialogs */
+.aurvin-admin-panel {
+  padding: 24px;
+}
+
+.aurvin-admin-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.aurvin-admin-notice {
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: var(--aurvin-selected);
+  border: 1px solid var(--aurvin-border);
+  color: var(--aurvin-text-primary);
+  font-size: 13px;
+}
+
+.aurvin-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--aurvin-border);
+  border-radius: 8px;
+  background: var(--aurvin-bg);
+}
+
+.aurvin-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.aurvin-admin-table th,
+.aurvin-admin-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--aurvin-border);
+}
+
+.aurvin-admin-table th {
+  background: var(--aurvin-surface-elevated);
+  color: var(--aurvin-text-secondary);
+  font-weight: 500;
+}
+
+.aurvin-table-email {
+  font-weight: 500;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-table-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.aurvin-btn-small {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  background: var(--aurvin-surface-elevated);
+  border: 1px solid var(--aurvin-border);
+  color: var(--aurvin-text-primary);
+  cursor: pointer;
+}
+
+.aurvin-btn-small:hover:not(:disabled) {
+  background: var(--aurvin-hover);
+}
+
+.aurvin-admin-btn-danger {
+  color: var(--aurvin-danger);
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+.aurvin-admin-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.aurvin-admin-badge-active {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.aurvin-admin-badge-pending {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--aurvin-warning);
+}
+
+.aurvin-admin-badge-inactive {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--aurvin-danger);
+}
+
+.aurvin-admin-more {
+  margin-top: 16px;
+}
+
+.aurvin-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+
+.aurvin-dialog-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--aurvin-surface-elevated);
+  border: 1px solid var(--aurvin-border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.aurvin-dialog-title {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.aurvin-dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.aurvin-dialog-cancel {
+  background: none;
+  border: 1px solid var(--aurvin-border);
+  color: var(--aurvin-text-primary);
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurvin-admin,
+  .aurvin-profile,
+  .aurvin-admin * {
+    scroll-behavior: auto;
+    transition: none !important;
+  }
+}

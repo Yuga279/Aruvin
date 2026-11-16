@@ -1,0 +1,161 @@
+/**
+ * ============================================================================
+ * FILE: auth.css
+ * LOCATION: frontend/src/features/auth/auth.css
+ * ============================================================================
+ *
+ * PURPOSE:
+ *    Styling for custom Aurvin authentication and onboarding screens.
+ * ============================================================================
+ */
+
+.aurvin-auth-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  width: 100%;
+  padding: 24px;
+  background-color: var(--aurvin-bg);
+  box-sizing: border-box;
+}
+
+.aurvin-auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--aurvin-surface-elevated);
+  border: 1px solid var(--aurvin-border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.aurvin-auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-auth-title {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-auth-desc {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  color: var(--aurvin-text-secondary);
+  line-height: 1.5;
+}
+
+.aurvin-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.aurvin-auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.aurvin-auth-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-auth-field input {
+  height: 42px;
+  padding: 0 12px;
+  background: var(--aurvin-bg);
+  border: 1px solid var(--aurvin-border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--aurvin-text-primary);
+  box-sizing: border-box;
+}
+
+.aurvin-auth-field input:focus {
+  outline: none;
+  border-color: var(--aurvin-primary);
+}
+
+.aurvin-auth-hint {
+  font-size: 12px;
+  color: var(--aurvin-text-secondary);
+  line-height: 1.4;
+}
+
+.aurvin-auth-error {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid var(--aurvin-danger);
+  color: var(--aurvin-danger);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.aurvin-auth-notice {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--aurvin-selected);
+  border: 1px solid var(--aurvin-border);
+  color: var(--aurvin-text-primary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.aurvin-auth-submit {
+  height: 42px;
+  border-radius: 8px;
+  border: none;
+  background: var(--aurvin-primary);
+  color: var(--aurvin-on-primary);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.aurvin-auth-submit:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.aurvin-auth-submit:disabled {
+  background: var(--aurvin-disabled-bg);
+  color: var(--aurvin-disabled-fg);
+  cursor: not-allowed;
+}
+
+.aurvin-auth-secondary {
+  background: none;
+  border: none;
+  color: var(--aurvin-text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.aurvin-auth-secondary:hover {
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}

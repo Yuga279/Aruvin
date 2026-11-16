@@ -1,0 +1,244 @@
+/**
+ * ============================================================================
+ * FILE: shell.css
+ * LOCATION: frontend/src/styles/shell.css
+ * ============================================================================
+ *
+ * PURPOSE:
+ *    Styles for Aurvin shell additions: brand lockup, sidebar navigation,
+ *    profile-menu theme switch and the command palette.
+ *
+ * ROLE IN PROJECT:
+ *    New Release 0 chrome uses aurvin- classes and --aurvin-* tokens only,
+ *    alongside the chat-surface rules in chat.css.
+ *
+ * KEY COMPONENTS:
+ *    - .aurvin-brand-lockup, .aurvin-sidebar-link, .aurvin-primary-nav
+ *    - .aurvin-theme-switch
+ *    - .aurvin-palette* (dialog, combobox, listbox), reduced motion
+ * ============================================================================
+ */
+
+/* Brand ------------------------------------------------------------------- */
+.aurvin-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aurvin-space-2);
+}
+
+.aurvin-brand-mark {
+  flex-shrink: 0;
+  border-radius: 9px;
+}
+
+.aurvin-brand-name {
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+/* Sidebar navigation ------------------------------------------------------ */
+.aurvin-sidebar-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--aurvin-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--aurvin-duration-fast) var(--aurvin-ease),
+    color var(--aurvin-duration-fast) var(--aurvin-ease);
+}
+
+.aurvin-sidebar-link:hover {
+  background-color: var(--aurvin-hover);
+  color: var(--aurvin-text-primary);
+}
+
+.aurvin-sidebar-link > span:first-of-type {
+  flex: 1;
+  text-align: left;
+}
+
+.aurvin-sidebar-shortcut {
+  font-family: var(--aurvin-mono);
+  font-size: 11px;
+  color: var(--aurvin-text-secondary);
+  opacity: 0.8;
+}
+
+.aurvin-primary-nav {
+  padding: 0 8px 8px;
+  border-bottom: 1px solid var(--aurvin-border);
+  margin-bottom: 8px;
+}
+
+.aurvin-primary-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Profile menu theme switch ----------------------------------------------- */
+.aurvin-theme-switch {
+  display: grid;
+  gap: 6px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--aurvin-border);
+  border-bottom: 1px solid var(--aurvin-border);
+  margin: 4px 0;
+}
+
+.aurvin-theme-switch-label {
+  font-size: var(--aurvin-text-xs);
+  font-weight: 600;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-theme-switch-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--aurvin-radius-sm);
+  background: var(--aurvin-hover);
+}
+
+/* Higher specificity than the profile menu's generic button rule. */
+.aurvin-theme-switch .aurvin-theme-switch-options button {
+  width: auto;
+  justify-content: center;
+  padding: 5px 6px;
+  border-radius: 6px;
+  font-size: var(--aurvin-text-xs);
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-theme-switch .aurvin-theme-switch-options button[aria-pressed='true'] {
+  background: var(--aurvin-surface-elevated);
+  color: var(--aurvin-text-primary);
+  box-shadow: var(--aurvin-shadow-sm);
+}
+
+/* Command palette --------------------------------------------------------- */
+.aurvin-palette-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--aurvin-z-dialog);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12vh 16px 16px;
+  background: var(--aurvin-overlay);
+  backdrop-filter: blur(4px);
+}
+
+.aurvin-palette {
+  width: min(600px, 100%);
+  max-height: min(520px, 76vh);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--aurvin-surface-elevated);
+  border: 1px solid var(--aurvin-border-strong);
+  border-radius: var(--aurvin-radius-lg);
+  box-shadow: var(--aurvin-shadow-lg);
+  animation: aurvin-palette-in var(--aurvin-duration-base) var(--aurvin-ease);
+}
+
+@keyframes aurvin-palette-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.aurvin-palette-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--aurvin-border);
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-palette-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-size: var(--aurvin-text-base);
+  color: var(--aurvin-text-primary);
+  outline: none;
+}
+
+.aurvin-palette-input::placeholder {
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-palette-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+}
+
+.aurvin-palette-group {
+  padding: 10px 10px 4px;
+  font-size: var(--aurvin-text-xs);
+  font-weight: 600;
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-palette-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: var(--aurvin-radius-sm);
+  font-size: var(--aurvin-text-md);
+  color: var(--aurvin-text-primary);
+  cursor: pointer;
+}
+
+.aurvin-palette-option[aria-selected='true'] {
+  background: var(--aurvin-selected);
+  box-shadow: inset 2px 0 0 var(--aurvin-primary);
+}
+
+.aurvin-palette-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aurvin-palette-hint {
+  font-size: var(--aurvin-text-xs);
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-palette-empty {
+  padding: 16px 10px;
+  font-size: var(--aurvin-text-md);
+  color: var(--aurvin-text-secondary);
+}
+
+.aurvin-palette-footer {
+  margin: 0;
+  padding: 8px 16px;
+  border-top: 1px solid var(--aurvin-border);
+  font-size: var(--aurvin-text-xs);
+  color: var(--aurvin-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurvin-palette { animation: none; }
+  .aurvin-sidebar-link { transition: none; }
+}
+
+@media (max-width: 600px) {
+  .aurvin-palette-backdrop { padding-top: 16px; }
+  .aurvin-palette { max-height: calc(100svh - 32px); }
+}

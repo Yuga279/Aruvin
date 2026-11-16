@@ -1,0 +1,7 @@
+# Calendar memory-first production handoff
+
+The 9 November 2026 user handoff is the approved design and acceptance specification. Complete Calendar v2 admission into shared text/voice memory; delay durable ownership until a validated external tool or semantic proposal action; preserve real store-bound receipts, original call identity, turn-wide budgets, and a resumable checkpoint; publish through the existing Calendar dispatcher/publication path; import the durable seal into the same memory stream; synchronize account/config/retention invalidation and dynamic expiry.
+
+The required production matrix covers ordinary chat with blocked persistence, local activation/schema repair, cold Calendar hydration and expiry, pending proposal zero-dispatch responses, blocked/partial promotion, successful read/create promotion, post-create persistence reconciliation, invalidation races, and cross-mode dirty consistency.
+
+Preserve all 78 initial dirty entries, prior benchmarks and prior workflow states. Do not stage or commit. Use offline deterministic fixtures, clear AURVIN_TEST_MONGODB_URI for routine suites, never provision or call live services. Unified review is skipped by user instruction. Planning, execution, meaningful tests, build, lint, built assembly and full backend routine verification remain required. Update docs/performance/calendar-memory-first-implementation-2026-11-08.md with actual evidence.

@@ -1,0 +1,6 @@
+[
+  {"type":"Connected","request_id":"fixture-request","sequence_id":0},
+  {"type":"TurnInfo","request_id":"fixture-request","sequence_id":1,"event":"StartOfTurn","turn_index":0,"transcript":"","audio_window_start":0,"audio_window_end":0,"words":[],"end_of_turn_confidence":0},
+  {"type":"TurnInfo","request_id":"fixture-request","sequence_id":2,"event":"Update","turn_index":0,"transcript":"What is next","audio_window_start":0,"audio_window_end":0.8,"words":[],"end_of_turn_confidence":0.1},
+  {"type":"TurnInfo","request_id":"fixture-request","sequence_id":3,"event":"EndOfTurn","turn_index":0,"transcript":"What is next?","audio_window_start":0,"audio_window_end":0.8,"words":[],"end_of_turn_confidence":0.9,"trigger":"model"}
+]
